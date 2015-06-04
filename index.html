@@ -1,23 +1,50 @@
 <!doctype html>
 <html>
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Arbutus+Slab|Arimo' rel='stylesheet' type='text/css'>
 <style>
 html, body { 
 	background: #DBE9EE ;
 	color: #166088; }
-h1 { 
+.heading { 
 	color: #222;
 	text-align: center;
-	padding: 60px;
+	padding-top: 60px;
 	font-family: 'Arbutus Slab', serif;
-}	
-</style>
 
+}
+
+h2{
+	color: #222;
+	text-align: center;
+	font-family: 'Arimo', sans-serif;
+
+
+}	
+.heading-alt{
+	color: #888;
+}
+</style>
+<title> COOL </title>
 </head>
 <body>
-<h1> What's up
+<h1 class="heading"> What's up
 
 </h1>
+<h2> skslcmsklsldlss
+
+</h2>
+<script type="text/javascript">
+console.log(5)
+
+function wrapper(selector, klass){
+	var elt = document.querySelector(selector);
+	elt.className = klass
+}
+setTimeout(function wrap(){
+	wrapper(".heading", "heading-alt")}, 3000);
+
+
+</script>
 </body>
 </html>
