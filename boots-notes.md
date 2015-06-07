@@ -20,7 +20,7 @@ You accidentally declared a global variable in the first line-- remember to put 
 There is a very esteemed software person who claims FizzBuzz should be the extend of most programming interviews. So, good job!
 
 ### chessBoard
-This is nit-picky, but you declared `row` inside a `for` loop. For loops don't have block-level scope, so I like to reflect that by declaring `var`s outside of them.
+This is nit-picky, but you declared `row` inside a `for` loop. `for`, `if`, and `while` loops don't have block-level scope, so I like to reflect that by declaring `var`s outside of them.
 
 ## Chapter 3
 ### countBs
