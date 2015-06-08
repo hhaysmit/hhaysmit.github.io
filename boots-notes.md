@@ -10,7 +10,9 @@ Here are some broad things:
 * Prefer `===` to `==` and `!==` to `!=`
 * Declare all of your variables at the top of their scope. This reflects the way that JS is interpreted. (See: hoisting)
 * Be sure to write tests!
-* reduce accepts a second parameter - the starting value. See it on [mdn](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce).
+* reduce accepts a second parameter - the starting value. See it on [mdn](https://developer.mozilla.org/en-
+US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce).
+* Stylistic thing - please put spaces before the conditions of `if`, `while` and `for` loops.
 
 ## Chapter 2
 ### triangleLoop
