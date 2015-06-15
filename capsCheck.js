@@ -2,7 +2,7 @@ var checkCaps = function(field, x, y){
 	var warned = false; 
 	field.addEventListener("keydown", function(event){
 		if(field.value.length > 2){
-		var caps = /^[^a-z]*$/ //Checks for lower case letters
+		var caps = /^[^a-z]*$/ //Checks for upper case letters
 		var numbers = /^[0-9\W]*$/ //Checks if string is only numbers or special characters
 		if(caps.test(field.value) && !numbers.test(field.value) && !warned){
 			var svg= d3.select("body").append("svg")
