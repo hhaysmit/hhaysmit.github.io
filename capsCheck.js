@@ -18,9 +18,10 @@ var checkCaps = function(field, x, y){
 		}
 		//Removes the caps lock warning once input is lower case
 		if(warned){
-			if(/[a-z]+/.test(field.value))
+			if(/[a-z]+/.test(field.value)){
 				d3.select("text").remove()
 				warned = false
+			}
 		}
 
 	}
