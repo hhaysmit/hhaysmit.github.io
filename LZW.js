@@ -9,7 +9,7 @@ LZW.prototype.encodeString = function(string){
 	var currString = string[0]
 	var output = ""
 	for(var i = 0; i < string.length-1; i++){
-		if(this.dict[currString+string[i+1]] == null){
+		if(this.dict[currString+string[i+1]] === null){
 			this._addEntry(currString+string[i+1]);
 			output += this.dict[currString]
 			currString = string[i+1]
