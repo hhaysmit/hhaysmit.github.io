@@ -1,50 +1,203 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<link href='http://fonts.googleapis.com/css?family=Arbutus+Slab|Arimo' rel='stylesheet' type='text/css'>
-<style>
-html, body { 
-	background: #DBE9EE ;
-	color: #166088; }
-.heading { 
-	color: #222;
-	text-align: center;
-	padding-top: 60px;
-	font-family: 'Arbutus Slab', serif;
-
-}
-
-h2{
-	color: #222;
-	text-align: center;
-	font-family: 'Arimo', sans-serif;
-
-
-}	
-.heading-alt{
-	color: #888;
-}
-</style>
-<title> COOL </title>
-</head>
+	<meta charset="utf-8">
+	<title></title>
+	 <script type="text/javascript" src="d3/d3.v3.min.js"></script>
+	 <link href='http://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
+	 <link href='http://fonts.googleapis.com/css?family=Josefin+Slab:100|Alegreya+Sans:100' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    	
+    h1 {
+    	text-align: center;
+    	font-family: 'Josefin Slab', serif;
+    	font-size: 300%;
+    	padding-top: 60px;
+    	color: #222;
+  
+    }	
+    .button{
+    	position: relative;
+    	font-family:'Quicksand', sans-serif;
+    	font-size: 12px;
+    }
+    #p1{
+    	text-align: center;
+    	padding-bottom: 30px;
+    }
+    </style>
+    	<h1>Pretty Chart</h1>
+</head>	
 <body>
-<h1 class="heading"> What's up
 
-</h1>
-<h2> skslcmsklsldlss
+	<p id="p1">
+	<strong style="display: block">
+		<button id= "newdata" class="button"> New Data </button>
+		<button id="sort" class="button"> Sort</button></strong>
+	</p>
+	<script type="text/javascript">
+		var w = 600;
+		var h = 250;
+		var padding = 20;
+		var barPadding = 1; 
+		var maxValue = 50;
+		var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16,  18, 23, 25 ];
+		var color = d3.scale.category20();
+		var xScale = d3.scale.ordinal()
+							.domain(d3.range(dataset.length))
+							.rangeRoundBands([0, w], .05);
+		var yScale = d3.scale.linear()
+							.domain([0, d3.max(dataset)+5])
+							.range([0, h]);
 
-</h2>
-<script type="text/javascript">
-console.log(5)
+		var svg = d3.select("#p1")
+				    .append("svg")
+				    .attr("aling", "center")
+				    .attr("width", w)
+				    .attr("height", h);
+		svg.selectAll("rect")
+			.data(dataset)
+			.enter()
+			.append("rect")
+			.attr("id", "opacRec")
+			.attr("x", function(d, i){
+				return xScale(i);
+			} )
+			.attr("y", function(d){
+				return h - yScale(d); 
+			})
+			.attr("width", xScale.rangeBand())
+			.attr("height", function(d){
+				return yScale(d);
+			})
+			.attr("fill", function(d, i){
+				return color(i)
+			})
+			.attr("opacity", .18);
+		svg.selectAll("bars")
+			.data(dataset)
+			.enter()
+			.append("rect")
+			.attr("id", "bars")
+			.attr("x", function(d, i){
+				return xScale(i);
+			})
+			.attr("y", function(d){
+				return h - yScale(d) - 2; })
+			.attr("width", xScale.rangeBand())
+			.attr("height", 4)
+			.attr("fill", function(d, i){
+				return color(i)
+			})
+		
+		svg.selectAll("text")
+			.data(dataset)
+			.enter()
+			.append("text")
+			.text(function(d){
+				return d;
+			})
+			.attr("x", function(d, i){
+				return xScale(i) + xScale.rangeBand()/2;
+			} )
+			.attr("y", function(d){
+				return h - yScale(d) - 5; 
+			})
+			.attr("font-family", "Quicksand, sans-serif")
+			.attr("font-size", "13px")
+			.attr("fill", "#222")
+			.attr("text-anchor", "middle")
+		var button = d3.select("#newdata")
+					.on("click", function(){
+						var numValues = dataset.length;              
+						dataset = [];                                       
+						for (var i = 0; i < numValues; i++) {               
+    						var newNumber = Math.floor(Math.random() * maxValue); 
+    						dataset.push(newNumber);                        
+						}
+						yScale.domain([0, d3.max(dataset)+5]);
+            			svg.selectAll("#opacRec")
+            				.data(dataset)
+            				.transition()
+            				.duration(1000)
+            				.attr("y", function(d){
+								return h - yScale(d); 
+							})
+            				.attr("height", function(d){
+								return yScale(d);});
+            			svg.selectAll("text")
+            				.data(dataset)
+            				.transition()
+            				.duration(1000)
+            				.text(function(d){
+            					return d;
+            				})
+            				.attr("x", function(d, i){
+								return xScale(i) + xScale.rangeBand()/2;
+							})
+							.attr("y", function(d){
+								return h - yScale(d) - 5; 
+							});
+						svg.selectAll("#bars")
+								.data(dataset)
+								.transition()
+								.duration(1000)
+								.attr("y", function(d){
+									return h - yScale(d) - 2; })
+					});
 
-function wrapper(selector, klass){
-	var elt = document.querySelector(selector);
-	elt.className = klass
-}
-setTimeout(function wrap(){
-	wrapper(".heading", "heading-alt")}, 3000);
+		var sortOrder = false; 
+		var sortBars = function(){
+			sortOrder = !sortOrder
+			svg.selectAll("#opacRec")
+				.sort(function(a, b){
+					if(sortOrder){
+						return d3.ascending(a, b);}
+					else{
+						return d3.descending(a, b);}})
+				.transition()
+				.delay(function(d, i) {
+        		return i * 50;
+				})
+				.duration(1000)
+				.attr("x", function(d, i){ return xScale(i);})
+			svg.selectAll("#bars")
+					.sort(function(a, b){
+						if(sortOrder){
+							return d3.ascending(a, b);
+						}else{
+							return d3.descending(a,b);
+						}})
+					.transition()	
+					.delay(function(d, i){
+						return i * 50;
+					})
+					.duration(1000)
+					.attr("width", xScale.rangeBand())
+					.attr("x", function(d, i){
+						return xScale(i);
+			});
+			svg.selectAll("text")
+				.sort(function(a, b){
+					if(sortOrder){
+						return d3.ascending(a, b);}
+					else{
+						return d3.descending(a, b);}})
+				.transition()
+				.delay(function(d, i) {
+       			return i * 50;
+				})
+				.duration(1000)
+				.attr("x", function(d, i){
+					return xScale(i) + xScale.rangeBand()/2;})
+				.attr("y", function(d){
+					return h - yScale(d) -5;});
 
+		};
+		d3.select("#sort").on("click", function(){
+			sortBars();
+		});
 
-</script>
+	</script>	
 </body>
 </html>
