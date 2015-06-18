@@ -17,7 +17,7 @@ exports.makeChart = function(dataset, location, width, height){
 
 		svg = d3.select(location)
 				    .append("svg")
-				    .attr("aling", "center")
+				    .attr("align", "center")
 				    .attr("width", w)
 				    .attr("height", h);
 		svg.selectAll("rect")
