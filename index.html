@@ -1,4 +1,4 @@
-<<html>
+<html>
 <head>
 	<title>Blog Post I</title>
 </head>
@@ -13,7 +13,10 @@
 <p>Twitter’s userbase is, on average, quite young. As a result, we expect Trump’s Twitter audience to be left-learning, and the general Twitter response to Trump’s tweets, no matter the subject of the tweet, to be quite negative. More specifically, however, we expect responses from locations within the Northeast and West to skew negatively, but responses from Southern regions to be more positive, as per recent presidential satisfaction polls.</p>	
 
 <h1>Data</h1>
-<p>Our data will be collected from Twitter’s developer API. We will gather responses (retweets, replies, tweets at Trump) to Trump’s tweets. Our data will consist of the message body of the tweet, as well metadata like timestamp, tweet ID and location of tweeter. Then we will run sentiment analysis on each these tweets to get positivity and negativity score of them. </p>	
+<p>Our data will be collected from Twitter’s developer API. We will gather responses (retweets, replies, tweets at Trump) to Trump’s tweets. Our data will consist of the message body of the tweet, as well metadata like timestamp, tweet ID and location of tweeter. Then we will run sentiment analysis on each these tweets to get positivity and negativity score of them.
+	At this point, we have written code the extract data from Twitter’s API. We are finalizing the specific parameters on which we wish to select the data (time, user, location, etc.), but we currently have a versatile framework that will allow use to easily get the data once our parameters have been chosen. We must decide the specific tweets with which to train our Twitter Bot, and will capture data in response to these tweet within 4 hours after they went live. The Twitter API allows one to easily get data in response to a user based on a timestamp. The image below shows a sample of some data we have extracted from the Twitter API. It is a sample of data that simply shows responses to @realDonaldTrump over 20 minutes of tweeting.
+<img src="trumpData.png">
+</p>	
 
 <h1>Visualization</h1>
 <p>We plan to use D3 to create all of our visualizations. Our first visualization will be a line graph that plots Donald Trump’s favorability on Twitter over time. In our second visualization, we plan to use D3’s mapping functions to break down Donald Trump’s favorability by location. Our third visualization will be a bar graph that compares Trump’s favorability in different subjects, such as immigration, health care, and Russia. </p>	
@@ -24,10 +27,13 @@
 
 <h1>Next Steps</h1>
 <p>Now that we are able to gather data from Twitter’s API, we must decide which specific tweets we would like to gather data for. Once these tweet’s have been selected, we will gather the desired data within the 4 hour period following each of the chosen tweets. This data can then be used to train our Twitter Bot so it is able to respond to any new tweet that goes live.
+<br>
 Our data must also be organized so that we are able to create visualizations based on time, geographical location, or other parameters that we must finalize.
-Once our Twitter Bot is appropriately trained, we plan to configure it such that it can gather and analyze data in order to respond to a user (@realDonaldTrump). 
+<br>
+Once our Twitter Bot is appropriately trained, we may plan to configure it such that it can gather and analyze data in order to respond to a user (@realDonaldTrump). 
+<br>
+Overview of next steps:
 <ul>
-	Overview of next steps:
 <li>Select tweets and gather/clean desired data</li>
 <li>Use data to train our Twitter Bot</li>
 <li>Create visualization/organize results to show responses based on geographical location, time, or in comparison to another Twitter user
@@ -35,7 +41,6 @@ Once our Twitter Bot is appropriately trained, we plan to configure it such that
 <li>Set up Twitter Bot so it is able to respond in real-time</li>
 <li>Potentially generalize Twitter Bot so it is able to respond to any popular Twitter user
 </li>
-
 </ul>
 
 </p>
