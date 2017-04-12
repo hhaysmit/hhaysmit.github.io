@@ -69,5 +69,59 @@ In addition to these tweets, however, the ML algorithm produces some that are gr
 
 <p>With our first machine learning algorithm implemented and a plan laid out for a second one, we are feeling good about our progress so far, despite the setbacks with Twitter’s API. In the coming weeks, we plan to continue to collect data, implement our second ML algorithm, and work on our visualizations. 
 </p>
+
+<h1>Blog Post III</h1>
+
+<p>At this point in our project, we’ve got a pretty good handle on our data. We’re gathering it as we go, since we’re trying to gather data for the full month of April. We did this because the Twitter API doesn’t store twitter data that’s more than a week old. Thus in order to get a month’s worth of data, one needs to gather data multiple times throughout the month, which is fairly easy to do. We also run sentiment analysis on each tweet we gather and score that tweet positively or negatively. As we mentioned in our previous blog post, that gives us the ability to get a positivity/negativity score for a given day. </p>
+
+<p>Recall that we’re gathering tweets for a four hour period after one of Trump’s tweets each day. The next goal that we have is to group each tweet we gather by issue, and compare it to the tweet of Trump’s after which it was gathered. We’ve started by labelling each of Trump’s tweets by its issue. After that, we want to label the tweets gathered in the four hours after Trump’s. We’re in the process of writing a machine learning algorithm that will look at each tweet and grab its keywords to label it by its issue. The first goal is to compare each tweet’s label to the label of Trump’s tweet from which this tweet was gathered, and see how they compare. Perhaps, when Trump tweets about something, people respond to him about something similar. Or maybe, no one really cares what Trump’s tweeting about, and just wants to say things to/about him.</p>
+
+<p>Combining this with our sentiment analysis data, we’ll be able to score positivity and negativity towards certain issues over time by the twitter user base. We’ll be able to create visualizations that allow the user to see how people have changed their discussion of issues over the month of April as actual events in the world occur. 
+</p>
+<p>At this point, we have code that gathers the data and a visualization. We also have code to conduct the sentiment analysis, although we think we might create our own training set from some of the tweets we’ve received to get better results from our sentiment analysis. We’ve also created a reply-bot based off of neural networks that can reply to Donald Trump using the positivity and negativity scores. The bot creates a new tweet that analyzes common bigrams and trigrams to write text that’s similar sentiment-wise. Here are some fun examples:
+<ul>
+<li>“hi good morning please resign nice sentiment though”</li>
+<li>“ding ding wrong”</li>
+<li>“great the american people are killed in your mouth you draft dodged 5 times so stfu”</li>
+</ul>
+One issue is that this really only has a ⅕ chance of working. A lot of times, the bot comes up with a tweet that doesn’t really make a ton of sense. Still, a 20% success rate isn’t bad. We’re going to spend some time over the next week trying to refine it to be more effective and helpful. Our next steps also include writing a program to label different tweets based on their issues. 
+</p>
+
+<p>At this point, we have one visualization that plots the sentiment scores of the positive and negative tweets over time as a line graph. We included this visualization in our last blog post. For our second visualization, we plan to use D3 to make a scatter plot of sentiment scores for specific topics, such as immigration, Syria, and the supreme court. The scatter plot will be similar to the one we created in D3 assignment for visualizing the Health and Wealth of Nations. Each circle on the graph will represent one policy topic and its size will correspond to the number of tweets in response to Donald Trump’s about that specific topic. The circle’s x-coordinate will be based on the number of positive responses and its y-coordinate will be based on the number of negative response. The circle will be filled in with a color scale based on the overall sentiment for that topic. A circle, for example, with a dark red fill would represent a topic with a strong negative response. In addition, there would be a slider on the bottom that you could use to change the date being displayed. This would allow you to track how Twitter’s response to specific topics has changed over time. </p>
+
+<p>In addition to the scatterplot, we plan to make a third visualization that highlights the most popular words used in tweets responding to Donald Trump.  For our data for the first day of April, for example, the most common words tweeted at Trump were:
+<ol>
+	<li>Trump - 7382</li>
+	<li>president - 7130</li>
+	<li>people - 6696</li>
+	<li>fake - 4444</li>
+	<li>Russia - 3316</li>
+	<li>day - 3286</li>
+	<li>April - 3025</li>
+	<li>stop - 2938</li>
+	<li>Obama - 2928</li>
+	<li>time - 2916</li>
+	<li>sad - 2871</li>
+	<li>American - 2861</li>
+	<li>fools - 2856</li>
+	<li>media - 2828</li>
+	<li>stand - 2664</li>
+	<li>Fox - 2655</li>
+	<li>agents - 2644</li>
+	<li>Donald - 2348</li>
+	<li>news - 2319</li>
+	<li>termination - 2289</li>
+	<li>Russian - 2273</li>
+	<li>represent - 2262</li>
+	<li>notice - 2262</li>
+	<li>serving - 2261</li>
+	<li>America - 2147</li>
+	<li>tweet - 2106</li>
+	<li>dear - 2085</li>
+	<li>manufacturing - 2023</li>
+	<li>resign - 2006</li>
+	<li>Flynn - 1988</li>
+</ol>
+</p>
 </body>
 </html>
