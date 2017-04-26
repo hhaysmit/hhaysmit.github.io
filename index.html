@@ -1,6 +1,36 @@
 <html>
 <head>
 	<title>Final Project Blog</title>
+	<style type="text/css">
+
+
+        #chart {
+            margin-left: 40px;
+            height: 506px;
+        }
+
+        text {
+            font: 10px sans-serif;
+        }
+        .axis path, .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+        .tick line {
+            stroke: gray;
+        }
+        .overlay {
+            fill: none;
+            pointer-events: all;
+            cursor: ew-resize;
+        }
+        
+        #rankPath:hover{
+            stroke: black;
+            opacity:100%;
+        }
+        </style>
 </head>
 <body>
 <h1>Blog Post I</h1>
@@ -123,5 +153,9 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 	<li>Flynn - 1988</li>
 </ol>
 </p>
+
+<h1>Blog Post I</h1>
+<p id="chart"></p>
+<script type="text/javascript" src="names.js"></script>
 </body>
 </html>
