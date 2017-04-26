@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title>Final Project Blog</title>
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 	<style type="text/css">
 
 
@@ -155,6 +156,22 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 </p>
 
 <h1>Blog Post I</h1>
+<p>At this point in our project, we’re set on our data. We’re gathering it as we go, since we’re trying to gather data for the full month of April. We did this because the Twitter API doesn’t store twitter data that’s more than a week old. Thus in order to get a month’s worth of data, one needs to gather data multiple times throughout the month, which is fairly easy to do. As a result, we haven’t gathered all of our data yet, but we’ll have it all gathered by the end of May.</p>
+<br>
+<p>We also run sentiment analysis on each tweet we gather and score that tweet positively or negatively. We were running into some serious problems with our sentiment analysis, but we’ve figured them out for the most part. Twitter data, in particular, is difficult to run sentiment analysis on, just because sarcasm is so widespread. The sentiment of individual words is less representative of the sentiment of the overall tweet than might be true of your average English sentence. Our sentiment analysis was previously putting Trump’s Twitter approval rating (the proportion of tweets @realDonaldTrump that are positive vs. negative) at around 60%. Even a casual glance over the data we gathered suggests that his approval rating on Twitter isn’t even close to that. We’ve corrected how we are conducting our machine learning, and are now getting much more believable results.</p>
+<br>
+<p>As we mentioned in our previous blog post, that gives us the ability to get a positivity/negativity score for a given day. For our first visualization, we plan to use D3 to make a scatter plot of sentiment scores for specific topics, such as immigration, Syria, and the supreme court. The scatter plot will be similar to the one we created in D3 assignment for visualizing the Health and Wealth of Nations. Each circle on the graph will represent one policy topic and its size will correspond to the number of tweets in response to Donald Trump’s about that specific topic. The circle’s y-coordinate will be based on the number of positive responses to that issue. The circle’s x-coordinate, on the other hand, will be the relevance of that issue on the day that the tweet was made, as measured by the number of New York Times articles about that issue on that day. The circle will be filled in with a color scale based on the overall sentiment for that topic. A circle, for example, with a dark red fill would represent a topic with a strong negative response. In addition, there would be a slider on the bottom that you could use to change the date being displayed. This would allow you to track how Twitter’s response to specific topics has changed over time. </p>
+
+<br>
+<p>Our other visualization is a series of line charts that describe the most tweeted-about issue day-by-day. We’ve got tweets @realDonaldTrump for every day of April (or we will), and we’ll be able to see which topics were most popular to be tweeted about on each day. The X-axis will be the day in question, while the Y-Axis is the popularity of the topic compared to others. Remember that the twitter data gathered for each day were gathered for a period of 4 hours AFTER @realDonaldTrump tweeted, so we can compare the most popular topics in response to Trump to the tweet that he actually made just before.</p>
+
+<br>
+<p>In addition to these visualizations, we created a bump chart of the most popular words used in tweets responding to Donald Trump. The visualization, shown below, plots the ten most used words over the month of April. Underneath the Y-axis there is a slider where you can change the dates being displayed to see a different week. If you hover over any of the plotted lines, a tooltip appears to display the word with that rank. </p>
+
+<br>
+<p>The other two critical parts of our project are machine learning algorithms. The first is necessary for the above visualization to work -- we need to actually gather the topic data! We need to be able to classify tweets by topic. We’ve got a machine learning algorithm that currently works on a training set that we made, and properly assigns a label (topic) to a tweet it is given.</p>
+<br>
+<p>The other machine learning algorithm we’ve got is a Twitter-bot based off of neural networks , that can take in a set of tweets and training data and create a response to Trump using the overall sentiment of the input Twitter data. The bot creates a new tweet that analyzes common bigrams and trigrams to write text that’s similar sentiment-wise. If most people today are tweeting negatively towards Trump, the Twitter-bot also tweets negatively, using many of the most popular words and phrases of the day.</p>
 <p id="chart"></p>
 <script type="text/javascript" src="names.js"></script>
 </body>
