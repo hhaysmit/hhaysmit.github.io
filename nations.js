@@ -49,7 +49,7 @@ var width = 960 - margin.right;
 var height = 550 - margin.top - margin.bottom;
 
 // Various scales
-var xScale = d3.scaleLinear().domain([0, 9000]).range([0, width]),
+var xScale = d3.scaleLinear().domain([0, 15000]).range([0, width]),
     //yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]),
     yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]),
     radiusScale = d3.scaleSqrt().domain([0, 90]).range([0, 30]),
