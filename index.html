@@ -236,16 +236,17 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 <p>	The other two critical parts of our project are machine learning algorithms. The first is necessary for the above visualization to work -- we need to actually gather the topic data! We need to be able to classify tweets by topic. We’ve got a machine learning algorithm that currently works on a training set that we made, and properly assigns a label (topic) to a tweet it is given.</p>
 <br>
 <p>The other machine learning algorithm we’ve got is a Twitter-bot based off of neural networks , that can take in a set of tweets and training data and create a response to Trump using the overall sentiment of the input Twitter data. The bot creates a new tweet that analyzes common bigrams and trigrams to write text that’s similar sentiment-wise. If most people today are tweeting negatively towards Trump, the Twitter-bot also tweets negatively, using many of the most popular words and phrases of the day.</p>
-<div id="sentimentTopic"></div>
-<script type="text/javascript" src="nations.js"></script>
+<br>
+
+<h2>Blog Post V</h2>
+
 <p>Our project collected data from Twitter to analyze @realDonaldTrump’s influence and likeability, and experimented with the reproducibility of retweets after a Trump tweet. To accomplish this, we collected four hours worth of retweet data throughout the month of April every day that Trump tweeted. We ran sentiment analysis and topic modeling machine learning algorithms on the cleaned tweet data to find counts of positive/negative tweets each day, as well as the counts of tweets per topic. Additionally, we trained a neural-network sequence modeling algorithm on this data to prepare it for sentence creation. </p>
-
-<br>
-<br>
-
-<br>
 <br>
 <p>Using the counts from topic modeling, we ran permutation tests to see whether people were more or less likely to tweet about the same topic that Donald Trump tweeted about that day. In line with our hypothesis, we found that this was true: with a confidence interval of 98%, we found that Tweeters were more likely to tweet about the same topic as the one they were responding to. This suggests that Twitter users are not sending retweets at random, but are creating specific replies to the Trump tweet. Additionally, our sentiment analysis shows an average approval rating of around 23%, considerably lower than the 40% approval rating of general polling across America. This provides some insight into the general opinions and political leanings of Twitter, which is often frequented by users that are younger and more liberal than typical American voters. Our neural-network based TweetBot also produced a variety of tweets informed by the retweets of the day, such as “hi good morning please resign nice sentiment though” and the hilarious, “DING DING WRONG”.</p>
+
+<p>We visualized our results with the following three graphs: </p>
+<div id="sentimentTopic"></div>
+<script type="text/javascript" src="nations.js"></script>
 <div id="topWords"></div>
 <script type="text/javascript" src="bundle.js"></script>
 </body>
