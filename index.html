@@ -27,9 +27,61 @@
             cursor: ew-resize;
         }
         
+        #topWords {
+            margin-left: 40px;
+            height: 506px;
+        }
+
+        
         #rankPath:hover{
             stroke: black;
             opacity:100%;
+            stroke-width: 8;
+        }
+
+        .label {
+            fill: #777;
+        }
+
+        .year.label {
+            font: 500 196px "Helvetica Neue";
+            fill: #ddd;
+        }
+
+        .year.label.active {
+            fill: #aaa;
+        }
+
+        .overlay {
+            fill: none;
+            pointer-events: all;
+            cursor: ew-resize;
+        }
+        div.tooltip {   
+                position: absolute;                  
+                width: 84px;                    
+                height: 100px;                   
+                padding: 0px 2px 1px 2px;               
+                font: 12px sans-serif;      
+                background: lightsteelblue; 
+                border: 1px;        
+                border-radius: 8px;         
+                pointer-events: none;  
+                line-height: 90%;
+                margin: .5cm .5cm .5cm .5cm;         
+        }
+
+        #topicTitle {
+            text-align: center;
+            font-weight: bold;
+            line-height: 90%;
+            margin: .2cm 0cm 0cm 0cm;
+        }
+
+        #sentiment, #topic, #importance {
+/*            line-height: 90%;*/
+            margin: .2cm .1cm 0cm .1cm;
+            font-size: 10px;
         }
         </style>
 </head>
