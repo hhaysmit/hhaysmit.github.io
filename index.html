@@ -244,10 +244,13 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 <br>
 <p>Using the counts from topic modeling, we ran permutation tests to see whether people were more or less likely to tweet about the same topic that Donald Trump tweeted about that day. In line with our hypothesis, we found that this was true: with a confidence interval of 98%, we found that Tweeters were more likely to tweet about the same topic as the one they were responding to. This suggests that Twitter users are not sending retweets at random, but are creating specific replies to the Trump tweet. Additionally, our sentiment analysis shows an average approval rating of around 23%, considerably lower than the 40% approval rating of general polling across America. This provides some insight into the general opinions and political leanings of Twitter, which is often frequented by users that are younger and more liberal than typical American voters. Our neural-network based TweetBot also produced a variety of tweets informed by the retweets of the day, such as “hi good morning please resign nice sentiment though” and the hilarious, “DING DING WRONG”.</p>
 
-<p>We visualized our results with the following three graphs: </p>
-<div id="sentimentTopic"></div>
-<script type="text/javascript" src="nations.js"></script>
+<p>After collecting and analyzing our data, we spent a long time thinking about how to best convey our results to others. We eventually decided to make three different visualizations using D3. The first, shown below, is a bump graph of the top ten most used words in tweets responding to Donald Trump. The axis on the left shows the word’s rank, while the axis on the right displays the word and the number of times it appeared in a tweet. The April label on the bottom indicates which week is currently being displayed and can be scrolled over to change the week. The bump graph is useful for visualizing what topics and ideas are trending among people responding to Donald Trump.</p>
+
 <div id="topWords"></div>
 <script type="text/javascript" src="bundle.js"></script>
+
+<p>Our second visualization, shown below, is a scatter plot that charts what topics Twitter users are talking about and their reactions to those topics. Each circle on the graph represents a topic commonly tweeted about by Donald Trump, such as Syria, immigration, and health care. The circle’s location is based on the number of tweets on that topic and the average sentiment of those tweets. We determined the number of tweets per topic by running the tweets through our topic modeling algorithm. Similarly, the average sentiment was determined using our sentiment analysis algorithm. In addition to highlighting the popularity and sentiment of a topic, the graph shows the importance of the topic for that day by the size of the circle. The importance of a topic was determined by the number of articles in the (“failing”) New York Times’ archive written about the topic on the given day. To change the day being displayed, you can scroll over the April label. If you hover over one of the circles, a tooltip appears which shows the topic, the average sentiment on a scale of 0 to 1, the number of tweets, and the importance of the topic. </p>
+<div id="sentimentTopic"></div>
+<script type="text/javascript" src="nations.js"></script>
 </body>
 </html>
