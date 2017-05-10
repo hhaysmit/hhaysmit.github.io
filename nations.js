@@ -290,8 +290,8 @@ function deactivate(){
         .duration(100)
         .style("opacity", .9)
         toolTip.html(text)
-          .style("left", (closest[0] + margin.left + d3.event.pageX)+ "px")
-          .style("top", (closest[1] - 50 + d3.event.pageY) + "px")
+          .style("left", (d3.event.pageX)+ "px")
+          .style("top", (d3.event.pageY) + "px")
 
 
 
