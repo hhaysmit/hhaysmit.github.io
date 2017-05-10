@@ -177,10 +177,6 @@ d3.json("aprilTopicSentiments.json", function(topics) {
  var voronoi = d3.voronoi().x(function(d){return x(d)}).y(function(d){return y(d)})(dayData);
 
 
-  // Add a title.
-  // dot.append("title").text(key);
-
-
   var voronoi_overlay = svg.append("rect")
         .attr("width", width).attr("height", height)
         .attr("opacity", 0)
@@ -286,7 +282,6 @@ function deactivate(){
     if(closest == null){
       toolTip.style("opacity", 0);
     } else {
-      console.log(closest.data)
         var text = "<p id='topicTitle'>" + topicDict[closest.data.topic] + "</p>"
         text += "<p id='sentiment'>Average sentiment: " + closest.data.sentiment.toFixed(3) + "</p>"
         text += "<p id='topic'>Tweets: " + closest.data.count + "</p>"
@@ -295,8 +290,8 @@ function deactivate(){
         .duration(100)
         .style("opacity", .9)
         toolTip.html(text)
-          .style("left", (closest[0] + margin.left + radius(closest.data) + 50)+ "px")
-          .style("top", (closest[1] - 50) + "px")
+          .style("left", (closest[0] + margin.left + d3.event.pageX)+ "px")
+          .style("top", (closest[1] - 50 + d3.event.pageY) + "px")
 
 
 
