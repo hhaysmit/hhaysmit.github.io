@@ -2,10 +2,6 @@
 // Step 1: Write accessor functions //
 //////////////////////////////////////
 
-// Accessor functions for the four dimensions of our data
-// For each of these, assume that d looks like the following:
-// {"name": string, "income": number, "lifeExpectancy": number,
-//  "population": number, "region": string}
 function x(d) {
     return xScale(d.count);
 }
@@ -53,7 +49,7 @@ var width = 960 - margin.right;
 var height = 550 - margin.top - margin.bottom;
 
 // Various scales
-var xScale = d3.scaleLinear().domain([0, 6000]).range([0, width]),
+var xScale = d3.scaleLinear().domain([0, 9000]).range([0, width]),
     //yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]),
     yScale = d3.scaleLinear().domain([0, 1]).range([height, 0]),
     radiusScale = d3.scaleSqrt().domain([0, 90]).range([0, 30]),
@@ -99,15 +95,11 @@ var clip = svg.append("defs").append("clipPath")
 
 var graph = svg.append("g")
 .attr("clip-path", "url(#clip)")
-//////////////////////////////
-// Step 2: Add x and y axes //
-//////////////////////////////
-  svg.append("g").call(yAxis);
-  svg.append("g").attr("transform", "translate(0, " + height + ")").call(xAxis);
 
-//////////////////////////////////////
-// Step 3: Add axis and year labels //
-//////////////////////////////////////
+svg.append("g").call(yAxis);
+svg.append("g").attr("transform", "translate(0, " + height + ")").call(xAxis);
+
+
   var lifeLabel = svg.append("text").attr("x", -290).attr("y", -45)
         .attr("id", "lifeLabel")
         .text("Average Sentiment of Topic")
@@ -158,9 +150,6 @@ d3.json("aprilTopicSentiments.json", function(topics) {
 
   // Add a dot per nation. Initialize the data at 1800, and set the colors.
   var dayData = interpolateData(1);
-  // dayData.sort(function(a, b){
-  //   return radius(b) - radius(a);
-  // });
 
   var dot = graph.append("g").selectAll("circle").data(dayData).enter().append("circle");  
         dot.attr("cx", x)
@@ -207,14 +196,6 @@ function deactivate(){
   overlay.on("mousemove", null)
 
 }
-  // Start a transition that interpolates the data based on year.
-  // svg.transition()
-  //     .duration(30000)
-  //     .ease(d3.easeLinear)
-  //     .tween("year", tweenYear)
-  //     .on("end", enableInteraction);
-
-
 
   // Positions the dots based on data.
     function position(dot) {
@@ -222,9 +203,6 @@ function deactivate(){
         .attr("cx", x)
         .attr("cy", y)
         .attr("r", radius);
-    // labels.attr("x", x)
-    //     .attr("y", y)
-    //     .text(key)
   }
   
 
@@ -233,16 +211,7 @@ function deactivate(){
     return radius(b) - radius(a);
   }
 
-
-    // Create a year scale
     var dayScale = d3.scaleLinear().range([1, 30]).domain([box.x, box.x + box.width])
-    // Cancel the current transition, if any.
-    //svg.transition().duration(0);
-    // For the year overlay, add mouseover, mouseout, and mousemove events
-    // that 1) toggle the active class on mouseover and out and 2)
-    // change the displayed year on mousemove.
-
-
 
     function mouseover() {
       dayLabel.classed("active", true);
@@ -260,7 +229,7 @@ function deactivate(){
       if (day == 15){
         day = 16
       }
-      data = interpolateData(day)  //.sort(function(a, b){return radius(b)-radius(a)});
+      data = interpolateData(day)
       dot.data(data);
       position(dot);
       dayLabel.text("April " + day);
@@ -292,10 +261,6 @@ function deactivate(){
         toolTip.html(text)
           .style("left", (d3.event.pageX)+ "px")
           .style("top", (d3.event.pageY) + "px")
-
-
-
-        //curr_label.attr("opacity", 1).attr("x", closest[0]).attr("y", closest[1]).text(text);
     }
   }
 
