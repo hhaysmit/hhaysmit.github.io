@@ -64,52 +64,13 @@ var graph = svg.append("g")
 
 
 // Load the data.
-d3.json("topWords.json", function(words) {
+d3.json("allTopWords.json", function(words) {
 
   console.log(words)
   function wordRankOverTime(word){
     var curr = words.filter(function(a){ 
       return a.word == word; 
     })
-     // var output = []
-     //  var dayBefore = curr[0].day;
-
-     //  if(curr[0].day != startDay){
-     //      var day = startDay
-     //      var fakeDay = {"day": day, "rank": 13, "word": word}
-     //      output.push(fakeDay);
-     //      while(day + 1 != dayBefore){
-     //        var fakeDay = {"day": day, "rank": 13, "word": word}
-     //        day++;
-     //        fakeDay.day = day
-     //        output.push(fakeDay)
-     //      }
-     //  }
-      
-     //  output.push(curr[0])
-     //  for(var i = 1; i < curr.length; i++){
-     //    if(curr[i].day == (dayBefore + 1)){
-     //      output.push(curr[i])
-     //      dayBefore++;
-     //    } else {
-     //      while(dayBefore + 1 != curr[i].day){
-     //        var temp = {"day": dayBefore, "rank": 13, "word": word}
-     //        dayBefore++;
-     //        temp.day = dayBefore
-     //        output.push(temp)
-     //      }
-     //    }
-     //  }
-        
-     //  if(curr[curr.length-1].day != lastDay){
-     //      var day = curr[curr.length-1].day + 1;
-     //      while(day <= lastDay){
-     //        var fakeLast = {"day": day, "rank": 13, "word": word};
-     //        output.push(fakeLast);
-     //        day++;
-     //        fakeLast.day = day
-     //      }
-     //    }
     var output = []
      if (curr[0].day != 1){
       output.push({"word": word, "rank": 20, "day": curr[0].day-1, "count": 0})
