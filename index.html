@@ -252,5 +252,9 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 <p>Our second visualization, shown below, is a scatter plot that charts what topics Twitter users are talking about and their reactions to those topics. Each circle on the graph represents a topic commonly tweeted about by Donald Trump, such as Syria, immigration, and health care. The circle’s location is based on the number of tweets on that topic and the average sentiment of those tweets. We determined the number of tweets per topic by running the tweets through our topic modeling algorithm. Similarly, the average sentiment was determined using our sentiment analysis algorithm. In addition to highlighting the popularity and sentiment of a topic, the graph shows the importance of the topic for that day by the size of the circle. The importance of a topic was determined by the number of articles in the (“failing”) New York Times’ archive written about the topic on the given day. To change the day being displayed, you can scroll over the April label. If you hover over one of the circles, a tooltip appears which shows the topic, the average sentiment on a scale of 0 to 1, the number of tweets, and the importance of the topic. </p>
 <div id="sentimentTopic"></div>
 <script type="text/javascript" src="nations.js"></script>
+
+<!-- <p>Our third visualization is a line a graph plotting the average sentiment of all tweets responding to Donald Trump. Each tick on the x-axis represents a day in April. Ticks on the y-axis represent the average sentiment on a scale from 0 to 1. As you can see from the graph, Twitter typically responded negatively to Donald Trump. The average sentiment for April was .23.</p>
+<p id="averageSentiment"></p>
+<script type="text/javascript" src="sentimentGraph.js"></script> -->
 </body>
 </html>
