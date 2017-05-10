@@ -16,7 +16,6 @@ function color(d){
   colorOptions = {}
   while(alreadyUsed){
     newColor = randomColor({hue: 'random'})
-    console.log(newColor)
     if (colorDict[newColor] == null){
       alreadyUsed = false
       colorDict[newColor] = d.word
