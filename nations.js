@@ -83,7 +83,7 @@ var xAxis = d3.axisBottom(xScale).ticks(12, d3.format(",d")),
     yAxis = d3.axisLeft(yScale);
 
 // Create the SVG container and set the origin
-var svg = d3.select("#chart").append("svg")
+var svg = d3.select("#sentimentTopic").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
@@ -127,7 +127,6 @@ var graph = svg.append("g")
 
 // Load the data.
 d3.json("aprilTopicSentiments.json", function(topics) {
-  console.log(interpolateData(6))
   function interpolateData(day) {
     return topics.map(function(d) {
       var currDay = d.data.filter(function(a){
@@ -162,8 +161,6 @@ d3.json("aprilTopicSentiments.json", function(topics) {
   // dayData.sort(function(a, b){
   //   return radius(b) - radius(a);
   // });
-
-  console.log(dayData)
 
   var dot = graph.append("g").selectAll("circle").data(dayData).enter().append("circle");  
         dot.attr("cx", x)
