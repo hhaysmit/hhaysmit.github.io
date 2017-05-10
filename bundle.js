@@ -1,22 +1,5 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @hhaysmit
- Sign out
- Unwatch 1
-  Star 0
-  Fork 0 hhaysmit/Data-Science-Visualizations Private
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathData-Science-Visualizations/namesVis/bundle.js
-118f1b0  18 minutes ago
-@hhaysmit hhaysmit initial commit
-1 contributor
-RawBlameHistory     
-697 lines (529 sloc)  18.1 KB
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+
 var randomColor = require('randomcolor')
 var colorDict = {}
 
@@ -27,12 +10,12 @@ function y(d) {
     return yScale(d.rank);
 }
 
+var colorCount = 0
 function color(d){
-  //return colorScale(Math.random()*20)
   alreadyUsed = true
+  colorOptions = {}
   while(alreadyUsed){
-    //newColor = "#" + Math.random().toString(16).slice(2, 8).toUpperCase()
-    newColor = randomColor()
+    newColor = randomColor({hue: 'random'})
     console.log(newColor)
     if (colorDict[newColor] == null){
       alreadyUsed = false
@@ -167,10 +150,6 @@ d3.json("allTopWords.json", function(words) {
           allPaths.push(currWord)
   	}
 
-    var aprilLabel = svg.append("text").attr("x", 320).attr("y", height+margin.bottom-10)
-      .attr("id", "aprilLabel").text("April 1 - April 7")
-      .style("fill", "#808080")
-      .style("font-size", "50px")
 
     var rankLabels = []
     var topCount = svg.append("text").attr("x", width+10).attr("y", -20).text("April " + lastDay+": Word Count")
@@ -199,6 +178,12 @@ d3.json("allTopWords.json", function(words) {
       .attr("id", "noTweet").text("so there is no data for word count.")
       .style("font-size", "12px")
       .attr("alignment-baseline", "middle")
+
+
+    var aprilLabel = svg.append("text").attr("x", 320).attr("y", height+margin.bottom-10)
+      .attr("id", "aprilLabel").text("April 1 - April 7")
+      .style("fill", "#808080")
+      .style("font-size", "50px")
 
     var box = aprilLabel.node().getBBox();
 
@@ -255,7 +240,6 @@ d3.json("allTopWords.json", function(words) {
 
 
 });
-
 },{"randomcolor":2}],2:[function(require,module,exports){
 // randomColor by David Merfield under the CC0 license
 // https://github.com/davidmerfield/randomColor/
@@ -712,5 +696,3 @@ d3.json("allTopWords.json", function(words) {
 }));
 
 },{}]},{},[1]);
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
