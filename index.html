@@ -88,6 +88,9 @@
             margin: .2cm .1cm 0cm .1cm;
             font-size: 10px;
         }
+	img {
+		width: 600px;
+	}
         </style>
 </head>
 <body>
@@ -229,8 +232,9 @@ One issue is that this really only has a ⅕ chance of working. A lot of times, 
 <p>The other two critical parts of our project are machine learning algorithms. The first is necessary for the above visualization to work -- we need to actually gather the topic data! We need to be able to classify tweets by topic. We’ve got a machine learning algorithm that currently works on a training set that we made, and properly assigns a label (topic) to a tweet it is given.</p>
 <br>
 <p>The other machine learning algorithm we’ve got is a Twitter-bot based off of neural networks , that can take in a set of tweets and training data and create a response to Trump using the overall sentiment of the input Twitter data. The bot creates a new tweet that analyzes common bigrams and trigrams to write text that’s similar sentiment-wise. If most people today are tweeting negatively towards Trump, the Twitter-bot also tweets negatively, using many of the most popular words and phrases of the day.</p>
-<p id="chart"></p>
-<script type="text/javascript" src="names1.js"></script>
+<!-- <p id="chart"></p>
+<script type="text/javascript" src="names1.js"></script> -->
+<img src="topWords.png">
 <br>
 <br>
 <p>	The other two critical parts of our project are machine learning algorithms. The first is necessary for the above visualization to work -- we need to actually gather the topic data! We need to be able to classify tweets by topic. We’ve got a machine learning algorithm that currently works on a training set that we made, and properly assigns a label (topic) to a tweet it is given.</p>
